@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Салон Персона Липецк</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Салон «Персона» Елены Швецовой в Липецке: сложное окрашивание, тотал блонд, стрижки, карвинг и уход L'Oréal. ул. Белянского, 14. Каждый день 10:00–20:00.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap">
+<style>
+:root{
+  --bg:#EDE7DF;--card:#F6F2EC;--ink:#24211F;--ink2:#6F685F;--muted:#A39A8F;--chip:#E6DED3;
+  --gold:#9C7743;--gold-ink:#FFFFFF;--dark:#2B2826;--on-dark:#F1EBE3;--on-dark2:#B9AFA3;
+  --line:rgba(36,33,31,.08);--shadow:0 1px 2px rgba(36,33,31,.04),0 8px 24px rgba(36,33,31,.05);
+  --shadow-up:0 2px 4px rgba(36,33,31,.05),0 16px 36px rgba(36,33,31,.09);
+  --glass:rgba(246,242,236,.62);--ok:#3B9A5A;--closed:#B85C4A;
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --r:16px;--gap:16px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1B1918;--card:#252220;--ink:#F1EBE3;--ink2:#B7AEA3;--muted:#82796F;--chip:#322E2A;
+  --gold:#C9A46A;--gold-ink:#1B1918;--dark:#12110F;--on-dark:#F1EBE3;--on-dark2:#A89F94;
+  --line:rgba(255,255,255,.08);--shadow:0 1px 2px rgba(0,0,0,.2),0 8px 24px rgba(0,0,0,.25);
+  --shadow-up:0 2px 4px rgba(0,0,0,.25),0 16px 36px rgba(0,0,0,.4);
+  --glass:rgba(37,34,32,.6);--ok:#55B874;--closed:#D47A66;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1B1918;--card:#252220;--ink:#F1EBE3;--ink2:#B7AEA3;--muted:#82796F;--chip:#322E2A;
+  --gold:#C9A46A;--gold-ink:#1B1918;--dark:#12110F;--on-dark:#F1EBE3;--on-dark2:#A89F94;
+  --line:rgba(255,255,255,.08);--shadow:0 1px 2px rgba(0,0,0,.2),0 8px 24px rgba(0,0,0,.25);
+  --shadow-up:0 2px 4px rgba(0,0,0,.25),0 16px 36px rgba(0,0,0,.4);
+  --glass:rgba(37,34,32,.6);--ok:#55B874;--closed:#D47A66;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1440px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:900px){.wrap{padding-left:max(48px,env(safe-area-inset-left,0px));padding-right:max(48px,env(safe-area-inset-right,0px))}}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:22px 10px}
+.logo{font-family:var(--serif);font-style:italic;font-size:30px;line-height:1;text-decoration:none;letter-spacing:-.01em}
+.nav{display:flex;gap:28px;font-size:14px;color:var(--ink2)}
+.nav a{text-decoration:none;transition:color .25s}
+.nav a:hover{color:var(--ink)}
+@media (max-width:860px){.nav{display:none}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding:0 22px;border-radius:999px;font:500 15px/1 var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .25s,color .25s,transform .25s,border-color .25s;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-gold{background:var(--gold);color:var(--gold-ink)}
+.btn-gold:hover{transform:translateY(-1px);filter:brightness(1.06)}
+.btn-ghost{background:var(--card);color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--muted)}
+.btn-sm{height:40px;padding:0 16px;font-size:14px}
+.btn:focus-visible,.seg button:focus-visible,.thumbs button:focus-visible,summary:focus-visible,.copy:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+.intro{display:grid;grid-template-columns:150px minmax(0,1fr);gap:36px;align-items:start;padding-block:36px 44px}
+.avatar{width:150px;height:150px;border-radius:14px;object-fit:cover;box-shadow:var(--shadow)}
+.kicker{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin:0 0 14px}
+h1{margin:0;font-weight:500;font-size:clamp(30px,3.4vw,46px);line-height:1.1;letter-spacing:-.022em;text-wrap:balance}
+h1 em{display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.32em;letter-spacing:-.01em;line-height:1.05;color:var(--gold);margin-top:4px}
+.lead{max-width:62ch;margin:18px 0 26px;font-size:clamp(16px,1.35vw,19px);line-height:1.6;color:var(--ink2)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.status{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14.5px}
+.dot{position:relative;width:9px;height:9px;border-radius:50%;background:var(--ok);flex:none}
+.dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:halo 1.8s ease-out infinite}
+.status.closed .dot{background:var(--closed)}
+.status.closed .dot::after{display:none}
+@keyframes halo{from{transform:scale(1);opacity:.55}to{transform:scale(2.6);opacity:0}}
+@media (max-width:640px){.intro{grid-template-columns:1fr;gap:20px;padding-block:20px 32px}.avatar{width:96px;height:96px}}
+
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);padding-bottom:64px}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:22px;min-width:0;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-up)}
+.chip{display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 12px;border-radius:999px;background:var(--chip);color:var(--ink2);font-size:12.5px;font-weight:500;position:relative;z-index:2}
+.chip svg{width:14px;height:14px}
+.card h2{margin:16px 0 8px;font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.1vw,30px);line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
+.card h2 em{font-style:italic;color:var(--gold)}
+.card p{margin:0;color:var(--ink2);font-size:15px;line-height:1.6}
+
+.c-gallery{grid-column:span 7;padding:11px;display:flex;flex-direction:column;min-height:620px}
+.c-master{grid-column:span 5}
+.c-cases{grid-column:span 4;background:var(--dark);color:var(--on-dark);border-color:transparent}
+.c-prices{grid-column:span 8}
+.c-carving{grid-column:span 5}
+.c-men{grid-column:span 3;padding:11px}
+.c-salon{grid-column:span 4;padding:11px}
+.c-visit{grid-column:span 7}
+.c-contacts{grid-column:span 5;padding:11px}
+@media (max-width:1100px){
+  .grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .c-gallery,.c-prices,.c-visit{grid-column:span 6}
+  .c-master,.c-cases,.c-carving,.c-contacts{grid-column:span 6}
+  .c-men,.c-salon{grid-column:span 3}
+}
+@media (max-width:640px){
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .grid>.card{grid-column:1/-1}
+  .c-gallery{min-height:0}
+}
+
+.stage{position:relative;flex:1;border-radius:10px;overflow:hidden;background:var(--chip);min-height:460px}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.03);transition:opacity .9s ease,transform 6s ease}
+.stage img.on{opacity:1;transform:scale(1)}
+.stage .chip{position:absolute;top:14px;left:14px}
+.glass{background:var(--glass);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);color:var(--ink)}
+.caption{position:absolute;left:14px;bottom:14px;right:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;z-index:2}
+.caption b{font-weight:500;font-size:15px}
+.caption span{font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.thumbs{display:flex;gap:8px;padding:11px 0 0;overflow-x:auto;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumbs button{flex:0 0 58px;height:72px;padding:0;border:0;border-radius:8px;overflow:hidden;cursor:pointer;opacity:.55;transition:opacity .3s,transform .3s;background:var(--chip)}
+.thumbs button img{width:100%;height:100%;object-fit:cover}
+.thumbs button[aria-current="true"]{opacity:1;transform:translateY(-2px)}
+.thumbs button:hover{opacity:.9}
+@media (max-width:640px){.stage{min-height:0;aspect-ratio:4/5}}
+
+.master{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:18px;margin-top:16px;height:calc(100% - 44px);min-height:560px}
+.master img{width:100%;height:100%;object-fit:cover;object-position:50% 12%;border-radius:10px;min-height:0}
+.master-info{display:flex;flex-direction:column;min-height:0}
+.master-info h2{margin-top:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 18px}
+.tags span{font-size:12.5px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink2)}
+.drift{position:relative;flex:1 1 0;height:0;overflow:hidden;min-height:220px;-webkit-mask-image:linear-gradient(transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(transparent,#000 18%,#000 82%,transparent)}
+.drift ul{list-style:none;margin:0;padding:0;animation:drift 38s linear infinite}
+.drift li{position:relative;padding:0 0 18px 22px}
+.drift li::before{content:"";position:absolute;left:0;top:7px;width:8.5px;height:8.5px;border-radius:50%;background:var(--ink)}
+.drift li::after{content:"";position:absolute;left:3.5px;top:16px;bottom:-1px;width:1.5px;background:var(--line)}
+.drift li b{display:block;font-weight:500;font-size:15.5px;line-height:1.35}
+.drift li span{font-size:13px;color:var(--muted)}
+@keyframes drift{to{transform:translateY(-50%)}}
+@media (max-width:640px){.drift{flex:none;height:300px}.master{grid-template-columns:1fr;height:auto;min-height:0}.master img{aspect-ratio:4/5;height:auto}}
+
+.c-cases .chip{background:rgba(255,255,255,.08);color:var(--on-dark2)}
+.c-cases h2{color:var(--on-dark)}
+.c-cases p{color:var(--on-dark2)}
+.c-cases ul{list-style:none;padding:0;margin:18px 0 20px;display:grid;gap:10px}
+.c-cases li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--on-dark)}
+.c-cases li svg{width:16px;height:16px;flex:none;margin-top:4px;color:var(--gold)}
+.cases-photo{border-radius:10px;aspect-ratio:16/8;width:100%;object-fit:cover;object-position:50% 30%;margin-top:18px}
+.from{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);font-size:14px;color:var(--on-dark2)}
+.from b{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--gold);font-variant-numeric:tabular-nums}
+
+.seg{position:relative;display:inline-flex;gap:2px;padding:4px;border-radius:999px;background:var(--chip);margin:18px 0 6px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.seg::-webkit-scrollbar{display:none}
+.seg .pill{position:absolute;top:4px;bottom:4px;left:0;border-radius:999px;background:var(--dark);transition:transform .42s cubic-bezier(.65,0,.35,1),width .42s cubic-bezier(.65,0,.35,1)}
+.seg button{position:relative;z-index:1;height:36px;padding:0 16px;border:0;border-radius:999px;background:transparent;font:500 14px/1 var(--sans);color:var(--ink2);cursor:pointer;white-space:nowrap;transition:color .3s}
+.seg button[aria-selected="true"]{color:var(--on-dark)}
+.panes{position:relative;overflow:hidden}
+.pane{animation:rise .42s cubic-bezier(.2,.7,.2,1)}
+.pane[hidden]{display:none}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.price-note{font-size:13.5px;color:var(--muted);margin:10px 0 4px}
+.rows{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px}
+.rows li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.rows li span{font-size:15px;min-width:0}
+.rows li small{display:block;font-size:12.5px;color:var(--muted);line-height:1.4;margin-top:2px}
+.rows li b{font-weight:500;font-size:15.5px;color:var(--gold);white-space:nowrap;font-variant-numeric:tabular-nums}
+@media (max-width:640px){.rows{grid-template-columns:1fr}}
+details{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
+summary{cursor:pointer;font-weight:500;font-size:14.5px;list-style:none;display:flex;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary svg{width:16px;height:16px;transition:transform .3s}
+details[open] summary svg{transform:rotate(180deg)}
+.full{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px 28px;margin-top:16px}
+.full h3{margin:0 0 6px;font-family:var(--serif);font-weight:400;font-style:italic;font-size:19px}
+.full p{font-size:12.5px;color:var(--muted);margin:0 0 8px;line-height:1.45}
+.full ul{list-style:none;margin:0;padding:0}
+.full li{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.full li b{font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.duo img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px}
+.mini{list-style:none;margin:0;padding:0}
+.mini li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.mini li b{font-weight:500;color:var(--gold);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.photo-card{position:relative;height:100%;min-height:420px;border-radius:10px;overflow:hidden}
+.photo-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo-card .chip{position:absolute;top:14px;left:14px}
+.photo-card .plate{position:absolute;left:12px;right:12px;bottom:12px;padding:14px 16px;border-radius:12px;z-index:2}
+.plate h3{margin:0 0 4px;font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.2}
+.plate p{margin:0;font-size:13.5px;color:var(--ink2);line-height:1.5}
+.plate .mini li{font-size:13.5px;padding:6px 0}
+@media (max-width:640px){.photo-card{min-height:0;aspect-ratio:4/5}}
+
+.steps{display:grid;grid-template-columns:minmax(0,1fr);min-height:130px}
+.step{grid-area:1/1;opacity:0;transform:translateY(14px);transition:opacity .42s ease,transform .42s cubic-bezier(.65,0,.35,1);pointer-events:none}
+.step.on{opacity:1;transform:none;pointer-events:auto}
+.step.out{opacity:0;transform:translateY(-14px)}
+.step h3{margin:10px 0 8px;font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.2vw,29px);line-height:1.2}
+.step h3 span{font-family:var(--sans);font-size:14px;color:var(--gold);font-weight:500;margin-right:10px;vertical-align:middle;font-variant-numeric:tabular-nums}
+.step p{max-width:52ch}
+.visit-foot{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+
+.contacts{display:grid;grid-template-rows:auto 1fr;gap:0;height:100%}
+.contacts .photo{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:16/9}
+.contacts .photo img{width:100%;height:100%;object-fit:cover}
+.contacts .photo .chip{position:absolute;top:14px;left:14px}
+.contacts-body{padding:18px 11px 11px;display:flex;flex-direction:column;gap:14px}
+.addr{font-family:var(--serif);font-size:24px;line-height:1.25;margin:0}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 18px;font-size:14.5px;margin:0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+.phone{display:inline-flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums}
+.copy{border:1px solid var(--line);background:transparent;color:var(--ink2);border-radius:999px;font:500 12px/1 var(--sans);padding:6px 10px;cursor:pointer}
+.copy:hover{color:var(--ink)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+
+.foot{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;color:var(--muted);font-size:13.5px}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--ink)}
+.foot .logo{font-size:22px;color:var(--ink)}
+
+.dock{display:none}
+@media (max-width:760px){
+  .dock{display:flex;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:var(--glass);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+  .dock .btn{flex:1;height:50px}
+  .dock .btn-ghost{flex:0 0 50px;padding:0}
+  .foot{padding-bottom:110px}
+}
+
+.rv{animation:rv .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 80ms)}
+@keyframes rv{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .stage img{transform:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-vk" viewBox="0 0 24 24"><path fill="currentColor" d="M12.8 18c-6 0-9.4-4.1-9.6-11h3c.1 5.1 2.3 7.2 4.1 7.6V7h2.8v4.4c1.7-.2 3.5-2.2 4.1-4.4H20c-.5 2.7-2.4 4.7-3.8 5.5 1.4.7 3.6 2.4 4.4 5.5h-3.1c-.7-2.1-2.3-3.7-4.5-3.9V18h-.2Z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M5 4h3.5l1.6 4-2.2 1.4a11 11 0 0 0 6.7 6.7l1.4-2.2 4 1.6V19a1.5 1.5 0 0 1-1.6 1.5A16.5 16.5 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4Z"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M12 3.5 13.9 10l6.6 2-6.6 2L12 20.5 10.1 14l-6.6-2 6.6-2L12 3.5Z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20c1.2-3.6 4-5.2 7.5-5.2s6.3 1.6 7.5 5.2"/></g></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M12 3.5s6 6.4 6 10.6a6 6 0 0 1-12 0C6 9.9 12 3.5 12 3.5Z"/></symbol>
+  <symbol id="i-scissors" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="6.5" cy="6.5" r="2.8"/><circle cx="6.5" cy="17.5" r="2.8"/><path d="M8.7 8.3 20 18M8.7 15.7 20 6"/></g></symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M3 8c2.2-2.4 4.2-2.4 6 0s3.8 2.4 6 0 3.8-2.4 6 0M3 16c2.2-2.4 4.2-2.4 6 0s3.8 2.4 6 0 3.8-2.4 6 0"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M4 10.5 12 4l8 6.5V20h-5.5v-5.5h-5V20H4v-9.5Z"/></symbol>
+  <symbol id="i-steps" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 7h10M4 12h16M4 17h7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linejoin="round" d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.2 4L19 7"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="7.5" r="3.5"/><path d="M8 13.5c2.5 1.6 5.5 1.6 8 0M9 20l3-4.2 3 4.2"/></g></symbol>
+</svg>
+
+<div class="wrap">
+  <header class="top rv" style="--i:0">
+    <a class="logo" href="#top" id="top">Персона</a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#works">Работы</a>
+      <a href="#master">Мастер</a>
+      <a href="#prices">Цены</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="btn btn-gold btn-sm" href="https://vk.me/persona_lipetsk" target="_blank" rel="noopener"><svg><use href="#i-vk"/></svg>Записаться</a>
+  </header>
+
+  <section class="intro">
+    <img class="avatar rv" style="--i:1" src="img/elena-face.webp" alt="Елена Швецова" width="150" height="150">
+    <div>
+      <p class="kicker rv" style="--i:2">Топ-стилист · колорист · технолог</p>
+      <h1 class="rv" style="--i:3">Салон «Персона» Елены Швецовой в Липецке.<em>Волосы, за которые не страшно.</em></h1>
+      <p class="lead rv" style="--i:4">20 лет в бьюти. Сложное окрашивание и чистый блонд, исправление неудачного окрашивания, стрижки для женщин, мужчин и детей. Работаем на L'Oréal Professional и Matrix.</p>
+      <div class="cta-row rv" style="--i:5">
+        <a class="btn btn-gold" href="https://vk.me/persona_lipetsk" target="_blank" rel="noopener"><svg><use href="#i-vk"/></svg>Записаться во ВКонтакте</a>
+        <a class="btn btn-ghost" href="tel:+79290133232"><svg><use href="#i-phone"/></svg>+7 929 013-32-32</a>
+        <span class="status" id="status"><span class="dot"></span><span id="status-text">Каждый день 10:00–20:00</span></span>
+      </div>
+    </div>
+  </section>
+
+  <main class="grid">
+
+    <article class="card c-gallery rv" style="--i:6" id="works">
+      <div class="stage" id="stage">
+        <span class="chip glass"><svg><use href="#i-spark"/></svg>Работы Елены</span>
+        <div class="caption glass"><b id="cap">Тотал блонд в ярком оттенке</b><span id="count">1 / 9</span></div>
+      </div>
+      <div class="thumbs" id="thumbs" role="tablist" aria-label="Работы"></div>
+    </article>
+
+    <article class="card c-master rv" style="--i:7" id="master">
+      <span class="chip"><svg><use href="#i-user"/></svg>Мастер</span>
+      <div class="master">
+        <img src="img/elena.webp" alt="Елена Швецова в салоне" loading="lazy">
+        <div class="master-info">
+          <h2>Елена <em>Швецова</em></h2>
+          <p>Технолог, колорист, эксперт по стрижкам. Берётся за самые сложные случаи.</p>
+          <div class="tags"><span>Блонд</span><span>Окрашивание</span><span>Карвинг</span><span>Биозавивка</span><span>Укладки</span></div>
+          <div class="drift" aria-label="Опыт и школы">
+            <ul id="drift">
+              <li><b>20 лет в бьюти</b><span>стилист и колорист</span></li>
+              <li><b>Vidal Sassoon</b><span>техника стрижек</span></li>
+              <li><b>Toni&amp;Guy</b><span>техника стрижек</span></li>
+              <li><b>Pivot Point</b><span>техника стрижек</span></li>
+              <li><b>Luis Llongueras</b><span>техника стрижек</span></li>
+              <li><b>Demetrius</b><span>техника стрижек</span></li>
+              <li><b>American Crew</b><span>мужские стрижки</span></li>
+              <li><b>Холодный уход L'Oréal</b><span>восстановление волос</span></li>
+              <li><b>Технолог</b><span>исправление окрашиваний</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card c-cases rv" style="--i:8">
+      <span class="chip"><svg><use href="#i-drop"/></svg>Сложные случаи</span>
+      <h2>Исправим неудачное <em>окрашивание</em></h2>
+      <p>Если волосы пожелтели, окрасились пятнами или ушли не в тот оттенок, Елена разберётся, как вернуть чистый цвет.</p>
+      <ul>
+        <li><svg><use href="#i-check"/></svg>Качественный холодный блонд</li>
+        <li><svg><use href="#i-check"/></svg>Выход из тёмного</li>
+        <li><svg><use href="#i-check"/></svg>Тотал блонд с тонированием</li>
+      </ul>
+      <div class="from"><span>Выход из тёмного</span><b>от 20 000 ₽</b></div>
+      <img class="cases-photo" src="img/platinum.webp" alt="Платиновый блонд на длинных волосах" loading="lazy">
+    </article>
+
+    <article class="card c-prices rv" style="--i:9" id="prices">
+      <span class="chip"><svg><use href="#i-scissors"/></svg>Услуги и цены</span>
+      <div>
+        <div class="seg" id="seg" role="tablist" aria-label="Категории услуг">
+          <span class="pill" id="pill"></span>
+          <button role="tab" id="t-cut" aria-controls="p-cut" aria-selected="true">Стрижки</button>
+          <button role="tab" id="t-color" aria-controls="p-color" aria-selected="false">Окрашивание</button>
+          <button role="tab" id="t-care" aria-controls="p-care" aria-selected="false">Уход и объём</button>
+          <button role="tab" id="t-men" aria-controls="p-men" aria-selected="false">Мужчинам и детям</button>
+        </div>
+      </div>
+      <div class="panes">
+        <div class="pane" id="p-cut" role="tabpanel" aria-labelledby="t-cut">
+          <p class="price-note">В стоимость входит мытьё, стрижка и укладка по форме. Шампунь и маска L'Oréal по типу волос.</p>
+          <ul class="rows">
+            <li><span>Короткие волосы</span><b>2 200 ₽</b></li>
+            <li><span>Средние волосы</span><b>2 500 ₽</b></li>
+            <li><span>Ниже плеч</span><b>3 000 ₽</b></li>
+            <li><span>Ниже лопаток</span><b>3 200 ₽</b></li>
+            <li><span>Кончики, утюжок, один срез</span><b>1 500 ₽</b></li>
+            <li><span>Стрижка чёлки</span><b>500 ₽</b></li>
+          </ul>
+        </div>
+        <div class="pane" id="p-color" role="tabpanel" aria-labelledby="t-color" hidden>
+          <p class="price-note">Мытьё и укладка входят в сложное окрашивание. Цена зависит от длины и густоты волос.</p>
+          <ul class="rows">
+            <li><span>В 1 тон, Matrix<small>короткие / средние / длинные</small></span><b>от 4 500 ₽</b></li>
+            <li><span>В 1 тон, L'Oréal Professional<small>Majirel, Dia Light, Dia Richesse</small></span><b>от 5 500 ₽</b></li>
+            <li><span>Сложное или тотал блонд<small>прикорневое</small></span><b>от 11 000 ₽</b></li>
+            <li><span>Сложное или тотал блонд<small>средние волосы</small></span><b>от 14 500 ₽</b></li>
+            <li><span>Сложное или тотал блонд<small>длинные волосы</small></span><b>от 16 500 ₽</b></li>
+            <li><span>Выход из тёмного</span><b>от 20 000 ₽</b></li>
+          </ul>
+        </div>
+        <div class="pane" id="p-care" role="tabpanel" aria-labelledby="t-care" hidden>
+          <p class="price-note">Уход Absolut Repair Molecular от L'Oréal восстанавливает 2 года повреждений за одно применение.</p>
+          <ul class="rows">
+            <li><span>Absolut Repair Molecular<small>от мочки уха до ниже лопаток</small></span><b>3 500–5 500 ₽</b></li>
+            <li><span>Карвинг L'Oréal<small>от мочки уха до ниже лопаток</small></span><b>5 500–11 000 ₽</b></li>
+            <li><span>Прикорневой объём<small>короткие и средние</small></span><b>4 000 ₽</b></li>
+            <li><span>Прикорневой объём<small>длинные</small></span><b>4 500 ₽</b></li>
+            <li><span>Антиобъём</span><b>3 500 ₽</b></li>
+            <li><span>Биозавивка</span><b>по запросу</b></li>
+          </ul>
+        </div>
+        <div class="pane" id="p-men" role="tabpanel" aria-labelledby="t-men" hidden>
+          <p class="price-note">40 минут. Консультация по форме лица и волос, подбор стиля: классика, мод, кроп, удлинёнка.</p>
+          <ul class="rows">
+            <li><span>Мужская стрижка</span><b>1 500 ₽</b></li>
+            <li><span>Стрижка + борода</span><b>2 000 ₽</b></li>
+            <li><span>Фейд</span><b>1 700 ₽</b></li>
+            <li><span>Отец + сын</span><b>2 500 ₽</b></li>
+            <li><span>Детская, до 7 лет</span><b>1 200 ₽</b></li>
+            <li><span>Наголо / 1 насадка / 2 насадки</span><b>1 000–1 200 ₽</b></li>
+          </ul>
+        </div>
+      </div>
+      <details>
+        <summary>Подробный прайс по длине волос<svg><use href="#i-down"/></svg></summary>
+        <div class="full">
+          <div><h3>Окрашивание в 1 тон, Matrix</h3><ul><li>Короткие<b>от 4 500 ₽</b></li><li>Средние<b>от 5 500 ₽</b></li><li>Длинные<b>от 8 000 ₽</b></li></ul></div>
+          <div><h3>Окрашивание в 1 тон, L'Oréal</h3><p>Возможна доплата за масляный краситель INOA.</p><ul><li>Короткие<b>от 5 500 ₽</b></li><li>Средние<b>от 7 500 ₽</b></li><li>Длинные<b>от 9 500 ₽</b></li></ul></div>
+          <div><h3>Сложное окрашивание, тотал блонд</h3><p>Осветление Matrix, тонирование Matrix SoColor Sync. Доплата при работе на L'Oréal.</p><ul><li>Прикорневое<b>от 11 000 ₽</b></li><li>Средние<b>от 14 500 ₽</b></li><li>Длинные<b>от 16 500 ₽</b></li><li>Выход из тёмного<b>от 20 000 ₽</b></li></ul></div>
+          <div><h3>Карвинг L'Oréal</h3><ul><li>До мочки уха<b>5 500 ₽</b></li><li>До плеч<b>6 500 ₽</b></li><li>Чуть ниже плеч<b>7 500 ₽</b></li><li>До лопаток<b>9 000 ₽</b></li><li>Ниже лопаток<b>11 000 ₽</b></li></ul></div>
+          <div><h3>Absolut Repair Molecular</h3><ul><li>До мочки уха<b>3 500 ₽</b></li><li>До плеч<b>4 000 ₽</b></li><li>Чуть ниже плеч<b>4 500 ₽</b></li><li>До лопаток<b>5 000 ₽</b></li><li>Ниже лопаток<b>5 500 ₽</b></li></ul></div>
+          <div><h3>Мужчинам и детям</h3><ul><li>Мужская стрижка<b>1 500 ₽</b></li><li>Стрижка + борода<b>2 000 ₽</b></li><li>Фейд<b>1 700 ₽</b></li><li>Отец + сын<b>2 500 ₽</b></li><li>Детская, до 7 лет<b>1 200 ₽</b></li><li>Наголо<b>1 000 ₽</b></li><li>1 насадка<b>1 000 ₽</b></li><li>2 насадки<b>1 200 ₽</b></li><li>Мытьё + стайлинг<b>500 ₽</b></li></ul></div>
+        </div>
+        <p class="price-note">Возможна доплата за дополнительный материал из-за длины или густоты волос, согласно прейскуранту.</p>
+      </details>
+    </article>
+
+    <article class="card c-carving rv" style="--i:10">
+      <span class="chip"><svg><use href="#i-wave"/></svg>Карвинг и биозавивка</span>
+      <h2>Кудри и объём, <em>которые держатся</em></h2>
+      <p>Долговременная укладка для тех, кто устал каждое утро крутить волосы. Подбираем состав и размер завитка под длину и состояние волос.</p>
+      <div class="duo">
+        <img src="img/perm-long.webp" alt="Мелкие завитки на длинных волосах" loading="lazy">
+        <img src="img/perm-short.webp" alt="Короткие кудри" loading="lazy">
+      </div>
+      <ul class="mini">
+        <li><span>Карвинг L'Oréal</span><b>5 500–11 000 ₽</b></li>
+        <li><span>Биозавивка</span><b>по запросу</b></li>
+      </ul>
+    </article>
+
+    <article class="card c-men rv" style="--i:11">
+      <div class="photo-card">
+        <img src="img/kids.webp" alt="Мальчик после стрижки" loading="lazy">
+        <span class="chip glass"><svg><use href="#i-scissors"/></svg>Мужчинам и детям</span>
+        <div class="plate glass">
+          <h3>Отец + сын</h3>
+          <ul class="mini">
+            <li><span>Вдвоём</span><b>2 500 ₽</b></li>
+            <li><span>Мужская</span><b>1 500 ₽</b></li>
+            <li><span>Детская</span><b>1 200 ₽</b></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="card c-salon rv" style="--i:12">
+      <div class="photo-card">
+        <img src="img/salon.webp" alt="Зал салона Персона" loading="lazy">
+        <span class="chip glass"><svg><use href="#i-home"/></svg>Атмосфера</span>
+        <div class="plate glass">
+          <h3>Светлый салон в Университетском</h3>
+          <p>Спокойно, чисто, без очередей. Работаем каждый день.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="card c-visit rv" style="--i:13">
+      <span class="chip"><svg><use href="#i-steps"/></svg>Как проходит визит</span>
+      <div>
+        <div class="seg" id="seg2" role="tablist" aria-label="Шаги визита">
+          <span class="pill" id="pill2"></span>
+          <button role="tab" aria-selected="true">Шаг 01</button>
+          <button role="tab" aria-selected="false">Шаг 02</button>
+          <button role="tab" aria-selected="false">Шаг 03</button>
+          <button role="tab" aria-selected="false">Шаг 04</button>
+        </div>
+      </div>
+      <div class="steps" id="steps">
+        <div class="step on"><h3><span>01</span>Запись</h3><p>Напишите во ВКонтакте или позвоните. Салон работает каждый день с 10:00 до 20:00.</p></div>
+        <div class="step"><h3><span>02</span>Консультация</h3><p>Обсуждаем, какой результат вы хотите, и смотрим длину и густоту волос. От них зависит расход материала и итоговая стоимость.</p></div>
+        <div class="step"><h3><span>03</span>Процедура</h3><p>Работаем на профессиональных составах L'Oréal Professional и Matrix, бережно к длине.</p></div>
+        <div class="step"><h3><span>04</span>Укладка</h3><p>Мытьё и укладка уже входят в стоимость стрижки и сложного окрашивания. Уходите с готовой причёской.</p></div>
+      </div>
+      <div class="visit-foot">
+        <a class="btn btn-gold" href="https://vk.me/persona_lipetsk" target="_blank" rel="noopener"><svg><use href="#i-vk"/></svg>Написать во ВКонтакте</a>
+        <a class="btn btn-ghost" href="tel:+79290133232"><svg><use href="#i-phone"/></svg>Позвонить</a>
+      </div>
+    </article>
+
+    <article class="card c-contacts rv" style="--i:14" id="contacts">
+      <div class="contacts">
+        <div class="photo">
+          <img src="img/entrance.webp" alt="Вход в салон Персона с вывеской" loading="lazy">
+          <span class="chip glass"><svg><use href="#i-pin"/></svg>Как нас найти</span>
+        </div>
+        <div class="contacts-body">
+          <p class="addr">Липецк, ул. Белянского, 14</p>
+          <dl class="kv">
+            <dt>Часы</dt><dd>Каждый день, 10:00–20:00</dd>
+            <dt>Телефон</dt><dd><span class="phone"><a href="tel:+79290133232" id="phone">+7 929 013-32-32</a><button class="copy" type="button" id="copy">Копировать</button></span></dd>
+            <dt>Индекс</dt><dd>398070</dd>
+          </dl>
+          <div class="btns">
+            <a class="btn btn-ghost btn-sm" href="https://yandex.ru/maps/?text=Липецк, улица Белянского, 14" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg>Построить маршрут</a>
+            <a class="btn btn-ghost btn-sm" href="https://vk.me/persona_lipetsk" target="_blank" rel="noopener"><svg><use href="#i-vk"/></svg>ВКонтакте</a>
+            <a class="btn btn-ghost btn-sm" href="https://ok.ru/group/52695427252392" target="_blank" rel="noopener"><svg><use href="#i-ok"/></svg>Одноклассники</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <footer class="foot">
+    <a class="logo" href="#top">Персона</a>
+    <span>Салон Елены Швецовой · Липецк, ул. Белянского, 14</span>
+    <span><a href="https://vk.me/persona_lipetsk" target="_blank" rel="noopener">ВКонтакте</a> · <a href="https://ok.ru/group/52695427252392" target="_blank" rel="noopener">Одноклассники</a> · <a href="tel:+79290133232">+7 929 013-32-32</a></span>
+  </footer>
+</div>
+
+<div class="dock">
+  <a class="btn btn-gold" href="https://vk.me/persona_lipetsk" target="_blank" rel="noopener"><svg><use href="#i-vk"/></svg>Записаться</a>
+  <a class="btn btn-ghost" href="tel:+79290133232" aria-label="Позвонить"><svg><use href="#i-phone"/></svg></a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var st = document.getElementById('status'), stt = document.getElementById('status-text');
+  function status(){
+    var now = new Date(), msk = new Date(now.getTime() + (now.getTimezoneOffset() + 180) * 60000);
+    var h = msk.getHours() + msk.getMinutes() / 60;
+    if (h >= 10 && h < 20) { st.classList.remove('closed'); stt.textContent = 'Открыто до 20:00'; }
+    else { st.classList.add('closed'); stt.textContent = h < 10 ? 'Закрыто, откроемся в 10:00' : 'Закрыто, откроемся завтра в 10:00'; }
+  }
+  status(); setInterval(status, 60000);
+
+  var works = [
+    ['lilac','Тотал блонд в ярком оттенке'],
+    ['platinum','Платиновый блонд'],
+    ['bob-silver','Каре в холодном блонде'],
+    ['bob-copper','Медное каре'],
+    ['mid-honey','Медовый оттенок, стрижка'],
+    ['straight-brown','Глубокий шоколад'],
+    ['curls-blond','Локоны на блонде'],
+    ['waves','Мягкие волны'],
+    ['updo','Причёска с плетением']
+  ];
+  var stage = document.getElementById('stage'), thumbs = document.getElementById('thumbs');
+  var cap = document.getElementById('cap'), count = document.getElementById('count');
+  var imgs = [], btns = [], cur = 0, timer = null;
+  works.forEach(function(w, i){
+    var im = document.createElement('img');
+    im.src = 'img/' + w[0] + '.webp'; im.alt = w[1]; if (i) im.loading = 'lazy';
+    if (!i) im.className = 'on';
+    imgs.push(im);
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('role','tab'); b.setAttribute('aria-label', w[1]);
+    b.setAttribute('aria-current', i ? 'false' : 'true');
+    b.innerHTML = '<img src="img/' + w[0] + '.webp" alt="" loading="lazy">';
+    b.addEventListener('click', function(){ show(i); restart(); });
+    thumbs.appendChild(b); btns.push(b);
+  });
+  imgs.forEach(function(im){ stage.insertBefore(im, stage.firstChild); });
+  function show(i){
+    imgs[cur].classList.remove('on'); btns[cur].setAttribute('aria-current','false');
+    cur = i;
+    imgs[cur].classList.add('on'); btns[cur].setAttribute('aria-current','true');
+    cap.textContent = works[cur][1]; count.textContent = (cur + 1) + ' / ' + works.length;
+  }
+  function restart(){ clearInterval(timer); if (!reduce) timer = setInterval(function(){ show((cur + 1) % works.length); }, 4200); }
+  stage.addEventListener('mouseenter', function(){ clearInterval(timer); });
+  stage.addEventListener('mouseleave', restart);
+  restart();
+
+  var drift = document.getElementById('drift');
+  drift.innerHTML += drift.innerHTML;
+
+  function segment(seg, pill, onPick){
+    var bs = Array.prototype.slice.call(seg.querySelectorAll('button'));
+    function place(i){
+      var b = bs[i];
+      pill.style.width = b.offsetWidth + 'px';
+      pill.style.transform = 'translateX(' + b.offsetLeft + 'px)';
+      bs.forEach(function(x, k){ x.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
+    }
+    bs.forEach(function(b, i){ b.addEventListener('click', function(){ onPick(i, true); }); });
+    window.addEventListener('resize', function(){ place(bs.findIndex(function(x){ return x.getAttribute('aria-selected') === 'true'; })); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ place(bs.findIndex(function(x){ return x.getAttribute('aria-selected') === 'true'; })); });
+    place(0);
+    return place;
+  }
+
+  var panes = ['p-cut','p-color','p-care','p-men'].map(function(id){ return document.getElementById(id); });
+  var pc = 0, ptimer = null;
+  var placeP = segment(document.getElementById('seg'), document.getElementById('pill'), function(i, user){
+    if (user) { clearInterval(ptimer); ptimer = null; }
+    panes[pc].hidden = true; pc = i; panes[pc].hidden = false; placeP(i);
+  });
+  if (!reduce) ptimer = setInterval(function(){ panes[pc].hidden = true; pc = (pc + 1) % panes.length; panes[pc].hidden = false; placeP(pc); }, 4500);
+
+  var steps = Array.prototype.slice.call(document.querySelectorAll('#steps .step'));
+  var sc = 0, hold = 0;
+  function go(i){
+    if (i === sc) return;
+    var prev = steps[sc];
+    prev.classList.remove('on'); prev.classList.add('out');
+    setTimeout(function(){ prev.classList.remove('out'); }, 450);
+    sc = i; steps[sc].classList.add('on'); placeS(i);
+  }
+  var placeS = segment(document.getElementById('seg2'), document.getElementById('pill2'), function(i, user){
+    if (user) hold = Date.now() + 6000;
+    go(i);
+  });
+  if (!reduce) setInterval(function(){ if (Date.now() > hold) go((sc + 1) % steps.length); }, 2600);
+
+  var copy = document.getElementById('copy');
+  copy.addEventListener('click', function(){
+    var t = '+7 929 013-32-32';
+    function done(){ copy.textContent = 'Скопировано'; setTimeout(function(){ copy.textContent = 'Копировать'; }, 1800); }
+    try {
+      navigator.clipboard.writeText(t).then(done, function(){ sel(); });
+    } catch (e) { sel(); }
+    function sel(){ var r = document.createRange(); r.selectNodeContents(document.getElementById('phone')); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+  });
+})();
+</script>
+</body>
+</html>
